@@ -1,0 +1,40 @@
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        min_idx = i
+        for j in range(i+1, n):
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+ def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+ def main():
+    arr = []
+    while True:
+        print("\n--- Experiment 2: Sorting ---")
+        print("1. Enter Salaries")
+        print("2. Selection Sort")
+        print("3. Bubble Sort")
+        print("4. Exit")
+        ch = int(input("Enter choice: "))
+        if ch == 1:
+            n = int(input("Enter number of employees: "))
+            arr = []
+            for i in range(n):
+                arr.append(float(input(f"Enter salary {i+1}: ")))
+        elif ch == 2:
+            selection_sort(arr)
+            print("Sorted:", arr)
+            print("Top 5 salaries:", arr[-5:])
+        elif ch == 3:
+            bubble_sort(arr)
+            print("Sorted:", arr)
+            print("Top 5 salaries:", arr[-5:])
+        elif ch == 4:
+            break
+ if __name__ == "__main__":
+    main()
