@@ -1,0 +1,33 @@
+def exp6():
+    size = 10
+    table = [[] for _ in range(size)]
+    def hash_func(key): return key % size
+    while True:
+        print("\n--- Experiment 6: Hash Table (Chaining) ---")
+        print("1. Insert")
+        print("2. Search")
+        print("3. Delete")
+        print("4. Display")
+        print("5. Exit")
+        ch = int(input("Enter choice: "))
+        if ch == 1:
+            k = int(input("Key: ")); v = input("Value: ")
+            table[hash_func(k)].append((k, v))
+        elif ch == 2:
+            k = int(input("Key: "))
+            found = False
+            for key, val in table[hash_func(k)]:
+                if key == k:
+                    print("Found:", val); found=True
+            if not found: print("Not Found")
+        elif ch == 3:
+            k = int(input("Key: "))
+            bucket = table[hash_func(k)]
+            for i,(key,val) in enumerate(bucket):
+                if key == k:
+                    bucket.pop(i); break
+        elif ch == 4:
+            print(table)
+        elif ch == 5: break
+ if __name__ == "__main__":
+    exp6()
