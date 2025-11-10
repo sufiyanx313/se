@@ -1,0 +1,42 @@
+class Node:
+    def __init__(self, roll, name, marks):
+        self.roll = roll
+        self.name = name
+        self.marks = marks
+        self.next = None
+ class LinkedList:
+    def __init__(self):
+        self.head = None
+    def add(self, roll, name, marks):
+        new_node = Node(roll, name, marks)
+        if not self.head:
+            self.head = new_node
+        else:
+            temp = self.head
+            while temp.next:
+                temp = temp.next
+            temp.next = new_node
+    def display(self):
+        temp = self.head
+        while temp:
+            print(temp.roll, temp.name, temp.marks)
+            temp = temp.next
+ def main():
+    ll = LinkedList()
+    while True:
+        print("\n--- Experiment 5: Student Linked List ---")
+        print("1. Add Student")
+        print("2. Display Students")
+        print("3. Exit")
+        ch = int(input("Enter choice: "))
+        if ch == 1:
+            r = int(input("Roll No: "))
+            n = input("Name: ")
+            m = int(input("Marks: "))
+            ll.add(r, n, m)
+        elif ch == 2:
+            ll.display()
+        elif ch == 3:
+            break
+ if __name__ == "__main__":
+    main()
