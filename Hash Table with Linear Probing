@@ -1,0 +1,37 @@
+ def exp7():
+    size = 10
+    table = [None] * size
+    def hash_func(key): return key % size
+    while True:
+        print("\n--- Experiment 7: Hash Table (Linear Probing) ---")
+        print("1. Insert")
+        print("2. Search")
+        print("3. Delete")
+        print("4. Display")
+        print("5. Exit")
+        ch = int(input("Enter choice: "))
+        if ch == 1:
+            k = int(input("Key: ")); v = input("Value: ")
+            idx = hash_func(k)
+            while table[idx] is not None:
+                idx = (idx + 1) % size
+            table[idx] = (k, v)
+        elif ch == 2:
+            k = int(input("Key: ")); idx = hash_func(k)
+            found = False
+            for _ in range(size):
+                if table[idx] and table[idx][0] == k:
+                    print("Found:", table[idx][1]); found=True; break
+                idx = (idx+1) % size
+            if not found: print("Not Found")
+        elif ch == 3:
+            k = int(input("Key: ")); idx = hash_func(k)
+            for _ in range(size):
+                if table[idx] and table[idx][0] == k:
+                    table[idx] = None; break
+                idx = (idx+1) % size
+        elif ch == 4:
+            print(table)
+        elif ch == 5: break
+ if __name__ == "__main__":
+    exp7()
