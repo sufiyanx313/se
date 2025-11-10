@@ -1,0 +1,26 @@
+class Node:
+    def __init__(self, city, pop):
+        self.city = city
+        self.pop = pop
+        self.left = None
+        self.right = None
+ def insert(root, city, pop):
+    if not root:
+        return Node(city, pop)
+    if city < root.city:
+        root.left = insert(root.left, city, pop)
+    else:
+        root.right = insert(root.right, city, pop)
+    return root
+ def inorder(root):
+    if root:
+        inorder(root.left)
+        print(root.city, "-", root.pop)
+        inorder(root.right)
+ def search(root, city):
+    if not root or root.city == city:
+        return root
+    if city < root.city:
+        return search(root.left, city)
+    return search(root.right, city)
+ def exp10():
