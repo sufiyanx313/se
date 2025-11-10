@@ -1,0 +1,25 @@
+def exp4():
+    queue = []
+    while True:
+        print("\n--- Experiment 4: Event Queue ---")
+        print("1. Add Event")
+        print("2. Process Event")
+        print("3. Display Pending Events")
+        print("4. Cancel Event")
+        print("5. Exit")
+        ch = int(input("Enter choice: "))
+        if ch == 1:
+            event = input("Enter event: ")
+            queue.append(event)
+        elif ch == 2 and queue:
+            print("Processing:", queue.pop(0))
+        elif ch == 3:
+            print("Pending:", queue)
+        elif ch == 4:
+            event = input("Enter event to cancel: ")
+            if event in queue:
+                queue.remove(event)
+        elif ch == 5:
+            break
+ if __name__ == "__main__":
+    exp4()
